@@ -30,3 +30,18 @@ We have created a very simple Connect 4 game using some of our favorite [front-e
 - React Testing Library
 - [Chakra UI](https://chakra-ui.com/docs/components)
 - [RecoilJS](https://recoiljs.org/)
+
+## Changelog
+
+Minimum requirements met.
+
+- implemented a function:
+  - name: src/hooks/diagonalWinLogic/getDiagonalArray()
+  - action: retrieves the arrays of the two diagonals that cross the position of the most recent coin
+- called the new function getDiagonalArray() inside src/hooks/usePlayPiece.ts:
+  - it is called within the testWin() logic to test if the player wins after each coin is added
+- added two tests for the getDiagonalArray() function;
+  - the first one tests that the player can win when four coins of the same colour are in the diagonal directed from the BottomLeft to the TopRight
+  - the second one tests that the player can win when four coins of the same colour are in the diagonal directed from the TopLeft to the BottomRight
+
+PS I am only adding this changelog in the README.md (and some comments here and there) as I am sure this branch will not be merged :)
