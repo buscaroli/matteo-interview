@@ -33,17 +33,19 @@ const OptionsModal: FC = () => {
   const pTwoDetails = useRecoilValue(playerTwoDetails)
 
   // Matteo: get the default names from const/index.ts
-  const [pOneName, setPOneName] = useState(pOneDetails[0].toString())
-  const [pTwoName, setPTwoName] = useState(pTwoDetails[0].toString())
+  const [pOneName, setPOneName] = useState(localStorage.getItem('playerOneName') || pOneDetails[0].toString())
+  const [pTwoName, setPTwoName] = useState(localStorage.getItem('playerTwoName') || pTwoDetails[0].toString())
   
 
   // Matteo: controlled components for the names of the players
   const playerOneNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setPOneName(e.target.value)
+      localStorage.setItem('playerOneName', e.target.value)
   }
 
   const playerTwoNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       setPTwoName(e.target.value)
+      localStorage.setItem('playerTwoName', e.target.value)
   }
   
 
