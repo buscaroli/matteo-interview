@@ -1,7 +1,8 @@
 import { Button } from "@chakra-ui/react";
 import { FC } from "react";
-import { useRecoilValue, useResetRecoilState } from "recoil";
-import { boardState, gameOverState, playerState } from "state";
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { boardState, gameOverState, playerState} from "state";
+import OptionsModal from "./OptionsModal";
 
 const GameControls: FC = () => {
   const board = useRecoilValue(boardState);
@@ -16,9 +17,12 @@ const GameControls: FC = () => {
   };
 
   return (
-    <Button onClick={handleReset} isDisabled={!board.some((col) => col.length)}>
-      Reset
-    </Button>
+    <>
+      <Button onClick={handleReset} isDisabled={!board.some((col) => col.length)}>
+        Reset
+      </Button>
+      <OptionsModal />
+    </>
   );
 };
 

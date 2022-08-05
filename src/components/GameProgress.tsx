@@ -7,7 +7,9 @@ import { gameOverState, playerState } from "state";
 const GameProgress: FC = () => {
   const player = useRecoilValue(playerState);
   const gameOver = useRecoilValue(gameOverState);
-  const name = playerName[player];
+  const name = player === 1 ? localStorage.getItem('playerOneName') || playerName[player] : localStorage.getItem('playerTwoName') || playerName[player];
+  
+  
 
   return (
     <Heading as="h3" size="lg">
