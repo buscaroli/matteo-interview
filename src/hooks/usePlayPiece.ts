@@ -32,7 +32,6 @@ const usePlayPiece = () => {
     const diagArrayToTopRight = getDiagonalArray(col, row, newBoard)
     const diagArrayToBottomRight = getDiagonalArray(col, row, newBoard, false)
 
-
     if (
       testWin(newBoard[col]) || // Did win vertically
       testWin(newBoard.map((col) => col[row] || 0)) || // Did win horizontally

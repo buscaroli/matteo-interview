@@ -81,3 +81,27 @@ test("player 2 should win with 4 in a row in the TopLeft to BottomRight diagonal
 
   assertGame(2, true, [[1, 2, 1, 2], [1, 2, 2], [1, 2], [2], [], [1, 1], []]);
 })
+
+test("player should not be able to play a piece if a diagonal strike (BottomLeft to TopRight) is complete", () => {
+  const { play, assertGame } = render();
+
+  [0, 1, 1, 2, 2, 3, 2, 3, 2, 3, 3 ].forEach(play);
+
+  assertGame(1, true, [[1], [2, 1], [2, 1, 1, 1], [2, 2, 2, 1], [], [], []]);
+
+  play(0)
+
+  assertGame(1, true, [[1], [2, 1], [2, 1, 1, 1], [2, 2, 2, 1], [], [], []])
+})
+
+test("player should not be able to play a piece if a diagonal strike (TopLeft to BottomRight) is complete", () => {
+  const { play, assertGame } = render();
+
+  [0, 0, 0, 0, 1, 1, 2, 1, 5, 2, 5, 3].forEach(play);
+
+  assertGame(2, true, [[1, 2, 1, 2], [1, 2, 2], [1, 2], [2], [], [1, 1], []]);
+
+  play(0)
+
+  assertGame(2, true, [[1, 2, 1, 2], [1, 2, 2], [1, 2], [2], [], [1, 1], []])
+})
